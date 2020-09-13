@@ -305,13 +305,13 @@ function tallyUpDonations(runners) {
  * 
  * @instructions
  * Study the code for counter1 and counter2. Answer the questions below.
- * 
+ * first off, this is a lot like OOP
  * 1. What is the difference between counter1 and counter2?
- * the initial count declaration is inside fn scope on 1 and global on 2, 1 returns a counter fn and 2 returns  
+ * the count declaration is inside fn scope on 1 and global on 2, 1 creates a counter fn and 2 is a counter fn, 1 returns a counter fn obj and 2 returns the count + 1
  * 2. Which of the two uses a closure? How can you tell?
- * counter1, count and fn using the count variable are in another fn's scope
+ * counter1; count and fn using the count variable are in another fn's scope(or grouped together lexically)
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- * when you need to associate data with the fn the uses the data, 
+ * when you need to associate data with the fn the uses the data or limit access to that variables data; when the variable needs to be used outside of the fn
  */
 
 // counter1 code
