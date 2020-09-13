@@ -294,7 +294,7 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @returns a number which is the sum of the donations by all runners.
  */
 function tallyUpDonations(runners) {
-    const red = (acc, val) => acc + val
+    const red = (acc, val) => acc + val;
     return runners.reduce(red, 0)
 }
 
@@ -308,7 +308,7 @@ function tallyUpDonations(runners) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ * the initial count declaration is inside fn scope on 1 and global on 2, 1 returns a counter fn and 2 returns  
  * 2. Which of the two uses a closure? How can you tell?
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
