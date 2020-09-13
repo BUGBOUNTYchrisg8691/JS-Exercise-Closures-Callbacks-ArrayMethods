@@ -364,8 +364,6 @@ function counterMakerWithLimit(limit) {
     }
 }
 
-
-
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
