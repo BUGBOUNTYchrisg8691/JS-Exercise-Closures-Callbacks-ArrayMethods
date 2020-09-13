@@ -298,6 +298,8 @@ function tallyUpDonations(runners) {
     return runners.reduce(red, 0)
 }
 
+tallyUp
+
 /////////////// CLOSURES ///////////////
 /////////////// CLOSURES ///////////////
 
@@ -364,22 +366,6 @@ function counterMakerWithLimit(limit) {
         return count;
     }
 }
-
-
-let counter = counterMakerWithLimit(3);
-console.log(counter());
-console.log(counter());
-console.log(counter());
-console.log(counter());
-console.log(counter());
-console.log(counter());
-console.log(counter());
-console.log(counter());
-console.log(counter());
-console.log(counter());
-console.log(counter());
-console.log(counter());
-console.log(counter());
 
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
