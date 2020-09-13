@@ -354,7 +354,7 @@ function counter2() {
  * etc
  */
 function counterMakerWithLimit(limit) {
-    let count = 0;
+    let count = -1;
     return function counter() {
         if (count < limit) {
             count++;
