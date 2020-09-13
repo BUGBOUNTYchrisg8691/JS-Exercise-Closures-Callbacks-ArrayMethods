@@ -310,9 +310,9 @@ function tallyUpDonations(runners) {
  * 1. What is the difference between counter1 and counter2?
  * the initial count declaration is inside fn scope on 1 and global on 2, 1 returns a counter fn and 2 returns  
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ * counter1, count and fn using the count variable are in another fn's scope
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ * when you need to associate data with the fn the uses the data, 
  */
 
 // counter1 code
@@ -353,9 +353,33 @@ function counter2() {
  * counter() // should return 0
  * etc
  */
-function counterMakerWithLimit( /* CODE HERE */ ) {
-    /* CODE HERE */
+function counterMakerWithLimit(limit) {
+    let count = 0;
+    return function counter() {
+        if (count < limit) {
+            count++;
+        } else {
+            count = 0;
+        }
+        return count;
+    }
 }
+
+
+let counter = counterMakerWithLimit(3);
+console.log(counter());
+console.log(counter());
+console.log(counter());
+console.log(counter());
+console.log(counter());
+console.log(counter());
+console.log(counter());
+console.log(counter());
+console.log(counter());
+console.log(counter());
+console.log(counter());
+console.log(counter());
+console.log(counter());
 
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
