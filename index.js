@@ -29,9 +29,10 @@ function processFirstItem(stringList, callback) {
  * 1. What is the difference between counter1 and counter2?
  *  counter1 uses a fn to create a counter fn and 2 does not,
  * 2. Which of the two uses a closure? How can you tell?
- *  
+ *  counter1 because it has to look outside of it's function/block scope to find counter definition
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ * when you need to associate data with the fn that uses the data or limit access to that variables data; when the variable needs to be used outside of the fn
+
  */
 
 // counter1 code
@@ -119,7 +120,7 @@ and returns the score at each pont in the game, like so:
 
 Final Score: awayTeam - homeTeam */
 
-// getInningScore fn because Lambda screws up once again
+// getInningScore fn
 /*
   fn takes params inning and number for inning choice
   fill array with aggregated score for each inning
