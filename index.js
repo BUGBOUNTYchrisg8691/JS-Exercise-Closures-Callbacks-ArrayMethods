@@ -27,9 +27,9 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ *  counter1 uses a fn to create a counter fn and 2 does not,
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ *  
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *
  */
@@ -85,8 +85,8 @@ function finalScore(callback, inns) {
     const runsHome = [];
     const runsAway = [];
     for (let i = 0; i < inns; i++) {
-        runsHome.push(inning());
-        runsAway.push(inning());
+        runsHome.push(callback());
+        runsAway.push(callback());
     }
     const red = (acc, i) => acc + i;
     return {
@@ -141,8 +141,35 @@ function getInningScore(callback, inn, inns) {
         'away': scorePerInnH[inn]
     }
 }
-console.log(getInningScore(inning, 2, 3));
+// console.log(getInningScore(inning, 2, 3));
+/*
+  scoreboard takes params two callbacks, inning and getInningScore, and number of innings
+  create array of inning scores for home and away
+  run callback(getInningScore) for each inning and 
+  return obj of inning progression
+*/
 
-function scoreboard() {
-    /* CODE HERE */
+function getInningScore(arr, inn) {
+    return [arr[inn].home, arr[inn].away]
 }
+
+function scoreboard(callbackA, callbackB, inns) {
+    const scoreBoard = {};
+    const scores = [{ 'inning': 0, 'home': 0, 'away': 0 }];
+    for (let i = 1; i <= inns; i++) {
+        scores.push({
+            'inning': i,
+            'home': scores[i - 1]['home'] + callbackA(),
+            'away': scores[i - 1]['away'] + callbackA()
+
+        });
+    }
+    scores.shift();
+    for (let i = 0; i < scores.length; i++) {
+        scoreBoard['inning' + i] = callbackB(scores, i);
+    }
+    return scoreBoard;
+}
+
+console.log(scoreboard(inning, getInningScore, 3));
+// scoreboard(inning, getInningScore, 3);
