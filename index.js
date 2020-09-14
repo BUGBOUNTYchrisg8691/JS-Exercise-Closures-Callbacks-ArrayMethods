@@ -95,7 +95,7 @@ function finalScore(callback, inns) {
     }
 }
 
-console.log(finalScore(inning, 3));
+// console.log(finalScore(inning, 3));
 
 /* Task 4: 
 
@@ -119,6 +119,30 @@ and returns the score at each pont in the game, like so:
 
 Final Score: awayTeam - homeTeam */
 
-function scoreboard( /* CODE HERE */ ) {
+// getInningScore fn because Lambda screws up once again
+/*
+  fn takes params inning and number for inning choice
+  fill array with aggregated score for each inning
+  get index of inning number in params 
+  returns object of inning scores for home and away
+*/
+
+function getInningScore(callback, inn, inns) {
+    const scorePerInnH = [0];
+    const scorePerInnA = [0];
+    for (let i = 0; i < inns; i++) {
+        scorePerInnH.push(scorePerInnH[i] + callback());
+        scorePerInnA.push(scorePerInnA[i] + callback());
+    }
+    scorePerInnH.shift();
+    scorePerInnA.shift();
+    return {
+        'home': scorePerInnH[inn],
+        'away': scorePerInnH[inn]
+    }
+}
+console.log(getInningScore(inning, 2, 3));
+
+function scoreboard() {
     /* CODE HERE */
 }
