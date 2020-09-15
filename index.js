@@ -135,11 +135,13 @@ function getInningScore(callback, inn, inns) {
         scorePerInnH.push(scorePerInnH[i] + callback());
         scorePerInnA.push(scorePerInnA[i] + callback());
     }
-    scorePerInnH.shift();
-    scorePerInnA.shift();
     return {
         'home': scorePerInnH[inn],
-        'away': scorePerInnH[inn]
+        'away': scorePerInnA[inn],
+        // 'score4chk': [
+        //     scorePerInnH,
+        //     scorePerInnA
+        // ]
     }
 }
 // console.log(getInningScore(inning, 2, 3));
@@ -150,9 +152,9 @@ function getInningScore(callback, inn, inns) {
   return obj of inning progression
 */
 
-function getInningScore(arr, inn) {
-    return [arr[inn].home, arr[inn].away]
-}
+// function getInningScore(arr, inn) {
+//     return [arr[inn].home, arr[inn].away]
+// }
 
 function scoreboard(callbackA, callbackB, inns) {
     const scoreBoard = {};
@@ -170,11 +172,44 @@ function scoreboard(callbackA, callbackB, inns) {
     }
     const fin = [];
     for (let i = 0; i < scores.length; i++) {
-        fin.push(`Inning ${i + 1}: Home  ${scoreBoard['inning' + (i + 1)][0]} - Away ${scoreBoard['inning' + (i + 1)][1]}`)
+        fin.push(`Inning ${i + 1}: Home ${scoreBoard['inning' + (i + 1)][0]} - Away ${scoreBoard['inning' + (i + 1)][1]}`)
     }
     // console.log(scoreBoard);
     return fin;
 }
 
-console.log(scoreboard(inning, getInningScore, 3));
+// console.log(scoreboard(inning, getInningScore, 3));
 // scoreboard(inning, getInningScore, 3);
+
+function scoreboard2(callback, inns) {
+    const fin = [{ 'inning': 0, 'home': 0, 'away': 0 }];
+    for (let i = 0; i < inns; i++) {
+        fin.push({
+            'inning': i + 1,
+            'home': fin[i].home + callback(),
+            'away': fin[i].away + callback()
+        })
+    }
+    fin.shift();
+    return fin;
+}
+// scoreboard2(inning, 9);
+// function getInningScore2(array, inn) {
+//     return {
+//         'home': scorePerInnH[inn],
+//         'away': scorePerInnA[inn],
+//     }
+// }
+
+// function scoreboard3(callbackA, callbackB, inns) {
+//     const scorePerInnH = [0];
+//     const scorePerInnA = [0];
+//     for (let i = 0; i < inns; i++) {
+//         scorePerInnH.push(scorePerInnH[i] + callbackA());
+//         scorePerInnA.push(scorePerInnA[i] + callbackA());
+//     }
+
+
+// }
+// // console.log(scoreboard3(inning, getInningScore2, 9));
+// scoreboard3(inning, getInningScore2, 9)
