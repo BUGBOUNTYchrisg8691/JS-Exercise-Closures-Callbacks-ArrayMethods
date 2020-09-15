@@ -162,14 +162,18 @@ function scoreboard(callbackA, callbackB, inns) {
             'inning': i,
             'home': scores[i - 1]['home'] + callbackA(),
             'away': scores[i - 1]['away'] + callbackA()
-
         });
     }
     scores.shift();
     for (let i = 0; i < scores.length; i++) {
-        scoreBoard['inning' + i] = callbackB(scores, i);
+        scoreBoard['inning' + (i + 1)] = callbackB(scores, i);
     }
-    return scoreBoard;
+    const fin = [];
+    for (let i = 0; i < scores.length; i++) {
+        fin.push(`Inning ${i + 1}: Home  ${scoreBoard['inning' + (i + 1)][0]} - Away ${scoreBoard['inning' + (i + 1)][1]}`)
+    }
+    // console.log(scoreBoard);
+    return fin;
 }
 
 console.log(scoreboard(inning, getInningScore, 3));
