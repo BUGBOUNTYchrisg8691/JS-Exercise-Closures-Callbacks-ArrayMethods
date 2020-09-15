@@ -107,12 +107,17 @@ pros of oop:
 easy to understand the concept of objects
 easy to interpret meaning of method calls
 reads like a set of instructions
+hide access to variables that are inside the class
 
 pros of fp:
 linking the output of one code to the input of another without the need to define variables, though I don't see how that a pro
 more reuseable
 because the code focuses on what to do and lets the underlying functions take care of how, it leaves room for refactoring and optimization
 eaier to scale without fear of bugs
+works well when no boundaries are required or the boundaries are already predefined
+works well when the state doesn't matter and little to no involvment with mutable data
+efficiency, lazy evaluation, nested functions, threading
+
 
 cons of oop:
 prone to bugs because objects and behavior are together and can lead to different performance for the same input
