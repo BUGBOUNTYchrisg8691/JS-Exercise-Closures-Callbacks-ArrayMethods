@@ -128,22 +128,22 @@ Final Score: awayTeam - homeTeam */
   returns object of inning scores for home and away
 */
 
-function getInningScore(callback, inn, inns) {
-    const scorePerInnH = [0];
-    const scorePerInnA = [0];
-    for (let i = 0; i < inns; i++) {
-        scorePerInnH.push(scorePerInnH[i] + callback());
-        scorePerInnA.push(scorePerInnA[i] + callback());
-    }
-    return {
-        'home': scorePerInnH[inn],
-        'away': scorePerInnA[inn],
-        // 'score4chk': [
-        //     scorePerInnH,
-        //     scorePerInnA
-        // ]
-    }
-}
+// function getInningScore(callback, inn, inns) {
+//     const scorePerInnH = [0];
+//     const scorePerInnA = [0];
+//     for (let i = 0; i < inns; i++) {
+//         scorePerInnH.push(scorePerInnH[i] + callback());
+//         scorePerInnA.push(scorePerInnA[i] + callback());
+//     }
+//     return {
+//         'home': scorePerInnH[inn],
+//         'away': scorePerInnA[inn],
+//         // 'score4chk': [
+//         //     scorePerInnH,
+//         //     scorePerInnA
+//         // ]
+//     }
+// }
 // console.log(getInningScore(inning, 2, 3));
 /*
   scoreboard takes params two callbacks, inning and getInningScore, and number of innings
@@ -156,27 +156,27 @@ function getInningScore(callback, inn, inns) {
 //     return [arr[inn].home, arr[inn].away]
 // }
 
-function scoreboard(callbackA, callbackB, inns) {
-    const scoreBoard = {};
-    const scores = [{ 'inning': 0, 'home': 0, 'away': 0 }];
-    for (let i = 1; i <= inns; i++) {
-        scores.push({
-            'inning': i,
-            'home': scores[i - 1]['home'] + callbackA(),
-            'away': scores[i - 1]['away'] + callbackA()
-        });
-    }
-    scores.shift();
-    for (let i = 0; i < scores.length; i++) {
-        scoreBoard['inning' + (i + 1)] = callbackB(scores, i);
-    }
-    const fin = [];
-    for (let i = 0; i < scores.length; i++) {
-        fin.push(`Inning ${i + 1}: Home ${scoreBoard['inning' + (i + 1)][0]} - Away ${scoreBoard['inning' + (i + 1)][1]}`)
-    }
-    // console.log(scoreBoard);
-    return fin;
-}
+// function scoreboard(callbackA, callbackB, inns) {
+//     const scoreBoard = {};
+//     const scores = [{ 'inning': 0, 'home': 0, 'away': 0 }];
+//     for (let i = 1; i <= inns; i++) {
+//         scores.push({
+//             'inning': i,
+//             'home': scores[i - 1]['home'] + callbackA(),
+//             'away': scores[i - 1]['away'] + callbackA()
+//         });
+//     }
+//     scores.shift();
+//     for (let i = 0; i < scores.length; i++) {
+//         scoreBoard['inning' + (i + 1)] = callbackB(scores, i);
+//     }
+//     const fin = [];
+//     for (let i = 0; i < scores.length; i++) {
+//         fin.push(`Inning ${i + 1}: Home ${scoreBoard['inning' + (i + 1)][0]} - Away ${scoreBoard['inning' + (i + 1)][1]}`)
+//     }
+//     // console.log(scoreBoard);
+//     return fin;
+// }
 
 // console.log(scoreboard(inning, getInningScore, 3));
 // scoreboard(inning, getInningScore, 3);
@@ -213,3 +213,38 @@ function scoreboard2(callback, inns) {
 // }
 // // console.log(scoreboard3(inning, getInningScore2, 9));
 // scoreboard3(inning, getInningScore2, 9)
+// function innings3() {
+
+// }
+
+function getInningScore(callbackA, inns) {
+    const outcomes = [{ 'inning': 0, 'home': 0, 'away': 0 }];
+    for (let i = 1; i <= inns; i++) {
+        outcomes.push({
+            'inning': i,
+            'home': outcomes[i - 1].home + callbackA(),
+            'away': outcomes[i - 1].away + callbackA()
+        })
+    }
+    outcomes.shift();
+    return outcomes;
+}
+
+function scoreboard(callbackA, callbackB, inns) {
+    const outcomes = callbackB(callbackA, inns);
+    return outcomes.map(inning => {
+        const innArr = inning.inning.toString(10).split('').map(Number);
+        if (inning.inning === 1 | (inning.inning > 20 && innArr[innArr.length - 1] === 1)) {
+            return inning.inning + 'st' + ' inning: ' + inning.home + ' - ' + inning.away;
+        } else if (inning.inning === 2 | (inning.inning > 20 && innArr[innArr.length - 1] === 2)) {
+            return inning.inning + 'nd' + ' inning: ' + inning.home + ' - ' + inning.away;
+        } else if (inning.inning === 3 | (inning.inning > 20 && innArr[innArr.length - 1] === 3)) {
+            return inning.inning + 'rd' + ' inning: ' + inning.home + ' - ' + inning.away;
+        } else {
+            return inning.inning + 'th' + ' inning: ' + inning.home + ' - ' + inning.away;
+        }
+    })
+}
+
+console.log(scoreboard(inning, getInningScore, 25))
+    // scoreboard(innings3, getInningScore3, 9)
