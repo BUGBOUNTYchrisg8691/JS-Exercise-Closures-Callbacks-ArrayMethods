@@ -29,9 +29,9 @@ function processFirstItem(stringList, callback) {
  * 1. What is the difference between counter1 and counter2?
  *  counter1 uses a fn to create a counter fn and 2 does not, 1 is a higher-order function
  * 2. Which of the two uses a closure? How can you tell?
- *  counter1 because it has to look outside of it's function/block scope to find counter definition
+ *  counter1 because it has to look outside of it's return's function/block scope to find count definition
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- * when you need to associate data with the fn that uses the data or limit access to that variables data; when the variable needs to be used outside of the fn
+ * when you need to associate data with the fn that uses the data or limit access to that variables data; when the variable needs to be used outside of the fn, 1 would be better if you had to make a bunch of separate counters for some reason you wouldn't have to write code for counter two over and over
 
  */
 
@@ -97,6 +97,20 @@ function finalScore(callback, inns) {
 }
 
 // console.log(finalScore(inning, 3));
+
+// function finalScore2(callback, inns) {
+//     let home = 0;
+//     let away = 0;
+//     for (let i = 0; i < inns; i++) {
+//         home += callback();
+//         away += callback();
+//     }
+//     return {
+//         'home': home,
+//         'away': away
+//     }
+// }
+// console.log(finalScore2(inning, 3));
 
 /* Task 4: 
 
@@ -181,18 +195,18 @@ Final Score: awayTeam - homeTeam */
 // console.log(scoreboard(inning, getInningScore, 3));
 // scoreboard(inning, getInningScore, 3);
 
-function scoreboard2(callback, inns) {
-    const fin = [{ 'inning': 0, 'home': 0, 'away': 0 }];
-    for (let i = 0; i < inns; i++) {
-        fin.push({
-            'inning': i + 1,
-            'home': fin[i].home + callback(),
-            'away': fin[i].away + callback()
-        })
-    }
-    fin.shift();
-    return fin;
-}
+// function scoreboard2(callback, inns) {
+//     const fin = [{ 'inning': 0, 'home': 0, 'away': 0 }];
+//     for (let i = 0; i < inns; i++) {
+//         fin.push({
+//             'inning': i + 1,
+//             'home': fin[i].home + callback(),
+//             'away': fin[i].away + callback()
+//         })
+//     }
+//     fin.shift();
+//     return fin;
+// }
 // scoreboard2(inning, 9);
 // function getInningScore2(array, inn) {
 //     return {
@@ -247,4 +261,4 @@ function scoreboard(callbackA, callbackB, inns) {
 }
 
 // console.log(scoreboard(inning, getInningScore, 125));
-    // scoreboard(innings3, getInningScore3, 9)
+// console.log(scoreboard(inning, getInningScore, 9));
