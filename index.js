@@ -246,5 +246,5 @@ function scoreboard(callbackA, callbackB, inns) {
     })
 }
 
-console.log(scoreboard(inning, getInningScore, 125))
+// console.log(scoreboard(inning, getInningScore, 125));
     // scoreboard(innings3, getInningScore3, 9)

@@ -44,6 +44,7 @@ Find the file `index.js` and complete the tasks until your tests are passing.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+Closure is when a variable looks outside of it's scope for the value of itself. 
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -65,8 +66,11 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+when name reached to the next level of the nested fn to get the value of name from param; 
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+no, the value of newRoll
 c. What is the lexical scope of `newRoll`? 
+within the fn the is returned by personalDice
 
 ### Task 3 - Stretch GoalsG
 
@@ -83,6 +87,9 @@ See if you can complete one or more of the following challenges:
 console.log("a defined? " + (typeof a !== 'undefined'));
 console.log("b defined? " + (typeof b !== 'undefined'));
 ```
+a: false;
+b: true;
+var retains the scope of a to the function meaning it is undefined on the global scale, and being that b has no var, let or const before it, it's defined as a global variable and therefore accessible by the console.log
 
 2. Write a function that would allow you to do this using a closure. (This is another interview question we've seen before - when you're ready for answers, view an explanation [here](https://www.coderbyte.com/algorithm/3-common-javascript-closure-questions)).
 
@@ -92,7 +99,29 @@ addSix(10); // returns 16
 addSix(21); // returns 27
 ```
 
+
+
 3. Research the differences between functional programming and object oriented programming. Then, describe the pros and cons of functional programming vs object-oriented programming. This is a common interview question and great practice!
+
+pros of oop:
+easy to understand the concept of objects
+easy to interpret meaning of method calls
+reads like a set of instructions
+
+pros of fp:
+linking the output of one code to the input of another without the need to define variables, though I don't see how that a pro
+more reuseable
+because the code focuses on what to do and lets the underlying functions take care of how, it leaves room for refactoring and optimization
+eaier to scale without fear of bugs
+
+cons of oop:
+prone to bugs because objects and behavior are together and can lead to different performance for the same input
+
+
+cons of fp:
+readability
+more people are familiar with oop
+harder to learn that oop
 
 ## Testing FAQ
 
