@@ -234,11 +234,11 @@ function scoreboard(callbackA, callbackB, inns) {
     const outcomes = callbackB(callbackA, inns);
     return outcomes.map(inning => {
         const innArr = inning.inning.toString(10).split('').map(Number);
-        if (inning.inning === 1 | (inning.inning > 20 && innArr[innArr.length - 1] === 1)) {
+        if (inning.inning === 1 || (inning.inning > 20 && innArr[innArr.length - 1] === 1)) {
             return inning.inning + 'st' + ' inning: ' + inning.home + ' - ' + inning.away;
-        } else if (inning.inning === 2 | (inning.inning > 20 && innArr[innArr.length - 1] === 2)) {
+        } else if (inning.inning === 2 || (inning.inning > 20 && innArr[innArr.length - 1] === 2)) {
             return inning.inning + 'nd' + ' inning: ' + inning.home + ' - ' + inning.away;
-        } else if (inning.inning === 3 | (inning.inning > 20 && innArr[innArr.length - 1] === 3)) {
+        } else if (inning.inning === 3 || (inning.inning > 20 && innArr[innArr.length - 1] === 3)) {
             return inning.inning + 'rd' + ' inning: ' + inning.home + ' - ' + inning.away;
         } else {
             return inning.inning + 'th' + ' inning: ' + inning.home + ' - ' + inning.away;
@@ -246,5 +246,5 @@ function scoreboard(callbackA, callbackB, inns) {
     })
 }
 
-console.log(scoreboard(inning, getInningScore, 25))
+console.log(scoreboard(inning, getInningScore, 125))
     // scoreboard(innings3, getInningScore3, 9)
