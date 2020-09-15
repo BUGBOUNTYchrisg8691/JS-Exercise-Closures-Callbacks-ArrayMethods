@@ -27,7 +27,7 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- *  counter1 uses a fn to create a counter fn and 2 does not,
+ *  counter1 uses a fn to create a counter fn and 2 does not, 1 is a higher-order function
  * 2. Which of the two uses a closure? How can you tell?
  *  counter1 because it has to look outside of it's function/block scope to find counter definition
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
